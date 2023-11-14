@@ -12,7 +12,7 @@ import java.util.Collection;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Table(name = "categorie")
 public class Categorie {
     @Id
     private int id;

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
+@Table(name = "responsable_rayon")
 public class ResponsableRayon extends User {
 
     @ManyToOne

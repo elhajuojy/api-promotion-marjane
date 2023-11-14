@@ -1,4 +1,4 @@
-package ma.yc.api.dto;
+package ma.yc.api.exceptions.response;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -19,7 +19,7 @@ public class ErrorResponse {
     private String code;
 
     @Schema(description = "Statut par defaut du code http")
-    private String status;
+    private HttpStatus status;
 
     @Schema(description = "Detail de l'erreur")
     private String message;
@@ -38,7 +38,7 @@ public class ErrorResponse {
 
     public ErrorResponse(String code, HttpStatus status, String message) {
         this();
-        this.status = status.name();
+        this.status = status;
         this.code = code;
         this.message = message;
     }

@@ -5,14 +5,17 @@
     <parent>
         <groupId>ma.yc.api</groupId>
         <artifactId>yc-api-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath/>
+        <version>1.3-SNAPSHOT</version>
+<!--        <relativePath/>-->
     </parent>
     <groupId>ma.yc.api</groupId>
     <artifactId>api-promotion-marjane</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>api-promotion-marjane</name>
     <description>api-promotion-marjane</description>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
