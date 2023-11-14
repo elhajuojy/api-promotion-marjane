@@ -1,6 +1,6 @@
 
 
-INSERT INTO promotion (createdat, datedebut, datefin, description, precentage, status, updatedat)
+INSERT INTO promotion (created_at, date_debut, date_fin, description, precentage, status, updated_at)
 VALUES
     (NOW(), '2020-01-01', '2020-01-01', 'Test 1', 10, 'ACCPETER', NOW()),
     (NOW(), '2020-01-02', '2020-01-02', 'Test 2', 15, 'ACCPETER', NOW()),

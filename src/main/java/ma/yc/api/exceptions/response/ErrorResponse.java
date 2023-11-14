@@ -19,7 +19,7 @@ public class ErrorResponse {
     private String code;
 
     @Schema(description = "Statut par defaut du code http")
-    private HttpStatus status;
+    private String status;
 
     @Schema(description = "Detail de l'erreur")
     private String message;
@@ -38,7 +38,7 @@ public class ErrorResponse {
 
     public ErrorResponse(String code, HttpStatus status, String message) {
         this();
-        this.status = status;
+        this.status = status.toString();
         this.code = code;
         this.message = message;
     }
