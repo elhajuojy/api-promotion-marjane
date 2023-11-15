@@ -22,7 +22,7 @@ public class Rayon {
     @OneToOne(mappedBy = "rayon")
     private Categorie categorie;
     @OneToOne
-    private Responsable responsable;
+    private ResponsableRayon responsableRayon;
 
     @ManyToOne
     private Centre centre;

@@ -31,7 +31,7 @@ public class Categorie {
     )
     private Collection<Centre> centres = new ArrayList<>();
 
-    @OneToOne()
+    @OneToOne
     @JoinColumn(name = "rayon_id")
     private Rayon rayon;
 

@@ -7,6 +7,7 @@ import jakarta.validation.Path;
 import ma.yc.api.exceptions.business.AlreadyExsitsException;
 import ma.yc.api.exceptions.business.BadRequestExcpetion;
 import ma.yc.api.exceptions.business.NotFoundException;
+import ma.yc.api.exceptions.business.OutOfTimeExpection;
 import ma.yc.api.exceptions.response.ErrorResponse;
 import ma.yc.api.exceptions.response.ValidationResponse;
 import org.hibernate.ObjectNotFoundException;
@@ -89,9 +90,18 @@ public class GlobalExpectionHandler extends ResponseEntityExceptionHandler {
     }
 
 
+    @ExceptionHandler({
+            OutOfTimeExpection.class
+    })
+        public ResponseEntity<Object> outOfTimeExpection(OutOfTimeExpection ex, WebRequest request) {
+
+        ErrorResponse errorRes = new ErrorResponse("400", HttpStatus.BAD_REQUEST,
+                "les promotions soient consultables par les responsable des rayon seulement entre 8h-12h00 du matin ,");
+        errorRes.setMessage(ex.getMessage());
 
 
-
+        return ResponseEntity.badRequest().body(errorRes);
+    }
     @ExceptionHandler({SQLGrammarException.class})
     public ResponseEntity<Object> sqlGrammarException(SQLGrammarException ex, WebRequest request) {
 

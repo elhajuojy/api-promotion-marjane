@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class Responsable {
+@Table(name="responsable_rayon")
+public class ResponsableRayon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

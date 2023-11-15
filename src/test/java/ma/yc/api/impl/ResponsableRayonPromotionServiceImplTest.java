@@ -2,11 +2,11 @@ package ma.yc.api.impl;
 
 import ma.yc.api.dto.ResponsablePromotionDto;
 import ma.yc.api.dto.ResponsablePromotionResponse;
-import ma.yc.api.entity.Responsable;
+import ma.yc.api.entity.ResponsableRayon;
 import ma.yc.api.enums.StatusPromotion;
 import ma.yc.api.mapper.ResponsablePromotoinMapper;
 import ma.yc.api.repository.PromotionRepository;
-import ma.yc.api.repository.ResponsableAuthRepository;
+import ma.yc.api.repository.ResponsableRayonRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,11 +15,11 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ResponsablePromotionServiceImplTest {
+class ResponsableRayonPromotionServiceImplTest {
 
 
 
-    private  ResponsableAuthRepository responsableAuthRepository;
+    private ResponsableRayonRepository responsableRayonRepository;
     private PromotionRepository promotionRepository ;
     private ResponsablePromotoinMapper responsablePromotoinMapper ;
     @BeforeEach
@@ -46,11 +46,11 @@ class ResponsablePromotionServiceImplTest {
     @Test
     void findResponsableById() {
         Long responsableId = 1L ;
-        Responsable responsable = new Responsable();
-        responsable.setId(1);
+        ResponsableRayon responsableRayon = new ResponsableRayon();
+        responsableRayon.setId(1);
 
-        Optional<Responsable> responsables = Optional.of(
-            responsable
+        Optional<ResponsableRayon> responsables = Optional.of(
+                responsableRayon
         );
 
         assertNotNull(responsables.get());

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthentificationController {
 
 
-
     private final AuthentificationService<AdminCentreDto> authentificationService;
 
 

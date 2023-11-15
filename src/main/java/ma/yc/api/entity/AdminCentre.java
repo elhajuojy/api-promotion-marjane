@@ -17,7 +17,6 @@ public class AdminCentre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String username;
     private String nom;
     private String prenom;

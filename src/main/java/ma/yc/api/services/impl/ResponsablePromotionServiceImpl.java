@@ -3,10 +3,10 @@ package ma.yc.api.services.impl;
 import jakarta.transaction.Transactional;
 import ma.yc.api.dto.*;
 import ma.yc.api.entity.Promotion;
-import ma.yc.api.entity.Responsable;
+import ma.yc.api.entity.ResponsableRayon;
 import ma.yc.api.mapper.ResponsablePromotoinMapper;
 import ma.yc.api.repository.PromotionRepository;
-import ma.yc.api.repository.ResponsableAuthRepository;
+import ma.yc.api.repository.ResponsableRayonRepository;
 import ma.yc.api.services.ResponsablePromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +18,13 @@ import java.util.Optional;
 @Transactional
 public class ResponsablePromotionServiceImpl implements ResponsablePromotionService {
 
-    private final ResponsableAuthRepository responsableAuthRepository;
+    private final ResponsableRayonRepository responsableRayonRepository;
     private final PromotionRepository promotionRepository ;
     private ResponsablePromotoinMapper responsablePromotoinMapper ;
 
     @Autowired
-    public ResponsablePromotionServiceImpl(ResponsableAuthRepository responsableAuthRepository,PromotionRepository promotionRepository) {
-        this.responsableAuthRepository = responsableAuthRepository;
+    public ResponsablePromotionServiceImpl(ResponsableRayonRepository responsableRayonRepository, PromotionRepository promotionRepository) {
+        this.responsableRayonRepository = responsableRayonRepository;
         this.promotionRepository = promotionRepository;
 //        this.responsablePromotoinMapper = ResponsablePromotoinMapper.INSTANCE;
     }
@@ -55,12 +55,12 @@ public class ResponsablePromotionServiceImpl implements ResponsablePromotionServ
         return response;
     }
 
-    public Responsable findResponsableById(Long responsableId){
+    public ResponsableRayon findResponsableById(Long responsableId){
         if (responsableId <1 ){
             return null;
         }
 
-        Optional<Responsable> responsable = this.responsableAuthRepository.findById(responsableId);
+        Optional<ResponsableRayon> responsable = this.responsableRayonRepository.findById(responsableId);
         return responsable.orElseThrow(
                 ()-> new RuntimeException("Responsible not found")
         );
