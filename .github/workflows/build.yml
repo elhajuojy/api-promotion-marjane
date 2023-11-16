@@ -11,7 +11,5 @@ jobs:
   setps:
     - uses: actions/checkout@v2
         - name: build test
-        -run : |
-          echo "run build test"
-
-          
+        -run: |
+          echo "run build test" 
