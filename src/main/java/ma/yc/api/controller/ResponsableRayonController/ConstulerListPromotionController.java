@@ -20,17 +20,15 @@ public class ConstulerListPromotionController {
         this.promotionService = promotionService;
     }
 
+    // TODO: 16/11/2023 consulterListPromotionPourResponsableRayon
+
     @GetMapping("/promotions")
     public ResponseEntity<Collection<PromotionDto>> consulterListPromotion(@RequestHeader("Authorization") String token){
-
-
-        return ResponseEntity.ok(promotionService.consulterListPromotionValide());
+        return ResponseEntity.ok(promotionService.consulterListPromotionPourResponsableRayon(1));
     }
 
     @GetMapping("/{id}/promotions")
     public ResponseEntity<Collection<PromotionDto>> consulterListPromotionParId(@RequestHeader("Authorization") String token, @PathVariable("id") int id){
-
-          int idResponsable   = id;
             return ResponseEntity.ok(promotionService.consulterListPromotionPourResponsableRayon(id));
     }
 
