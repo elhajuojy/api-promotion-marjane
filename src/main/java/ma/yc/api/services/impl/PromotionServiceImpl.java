@@ -106,6 +106,7 @@ public class PromotionServiceImpl implements PromotionService {
         Collection<PromotionDto> promotionDtos = new ArrayList<>();
         isCurrentTimeInRange();
         Long idLong = Long.valueOf(id);
+
         Optional<ResponsableRayon> responsableRayon = responsableRayonRepository.findById(idLong);
         if (responsableRayon.isPresent()){
             // TODO: 15/11/2023 GET PROMOTION RELATED TO RESPONSABLE RAYON
@@ -114,6 +115,8 @@ public class PromotionServiceImpl implements PromotionService {
                             promotionDtos.add(PromotiomMapper.promotionMapper.toDto(produit.getPromotion()));
                         }
                 );
+
+
 
         }else {
             logger.error("Le responsable n'existe pas");

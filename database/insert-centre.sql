@@ -1,0 +1,28 @@
+INSERT INTO "public"."centre" ("created_at", "updated_at", "adresse", "email", "nom", "tel", "ville_id")
+VALUES
+(NOW(), NOW(), '123 Avenue Hassan II, Casablanca', 'casablanca@example.com', 'Carrefour Casablanca', '0522334455', floor(random() * 100) + 1),
+(NOW(), NOW(), '789 Rue Mohammed V, Rabat', 'rabat@example.com', 'Marjane Rabat', '0537668899', floor(random() * 100) + 1),
+(NOW(), NOW(), '456 Boulevard Mohammed VI, Marrakech', 'marrakech@example.com', 'Aswak Marrakech', '0524496677', floor(random() * 100) + 1),
+(NOW(), NOW(), '567 Avenue Hassan II, Tangier', 'tangier@example.com', 'Acima Tangier', '0538899001', floor(random() * 100) + 1),
+(NOW(), NOW(), '789 Avenue Mohammed V, Agadir', 'agadir@example.com', 'Marjane Agadir', '0522112233', floor(random() * 100) + 1),
+(NOW(), NOW(), '890 Rue Ibn Battuta, Fes', 'fes@example.com', 'Aswak Fes', '0534455667', floor(random() * 100) + 1),
+(NOW(), NOW(), '345 Avenue Allal Ben Abdellah, Oujda', 'oujda@example.com', 'Carrefour Oujda', '0536677889', floor(random() * 100) + 1),
+(NOW(), NOW(), '432 Boulevard Mohammed V, Kenitra', 'kenitra@example.com', 'Marjane Kenitra', '0539900112', floor(random() * 100) + 1),
+(NOW(), NOW(), '876 Rue Ahmed El Maanouni, Sale', 'sale@example.com', 'Aswak Sale', '0523344556', floor(random() * 100) + 1),
+(NOW(), NOW(), '234 Avenue Ibn Sina, Temara', 'temara@example.com', 'Carrefour Temara', '0531122334', floor(random() * 100) + 1),
+(NOW(), NOW(), '789 Avenue Hassan II, Mohammedia', 'mohammedia@example.com', 'Marjane Mohammedia', '0523344556', floor(random() * 100) + 1),
+(NOW(), NOW(), '567 Boulevard Mohammed VI, El Jadida', 'eljadida@example.com', 'Aswak El Jadida', '0521122334', floor(random() * 100) + 1),
+(NOW(), NOW(), '321 Avenue Mohammed V, Casablanca', 'casablanca2@example.com', 'Acima Casablanca', '0523344556', floor(random() * 100) + 1),
+(NOW(), NOW(), '456 Rue Mohammed VI, Rabat', 'rabat2@example.com', 'Marjane Rabat', '0537668899', floor(random() * 100) + 1),
+(NOW(), NOW(), '567 Boulevard Hassan II, Marrakech', 'marrakech2@example.com', 'Aswak Marrakech', '0524496677', floor(random() * 100) + 1),
+(NOW(), NOW(), '678 Avenue Mohammed V, Tangier', 'tangier2@example.com', 'Acima Tangier', '0538899001', floor(random() * 100) + 1),
+(NOW(), NOW(), '789 Avenue Hassan II, Agadir', 'agadir2@example.com', 'Marjane Agadir', '0522112233', floor(random() * 100) + 1),
+(NOW(), NOW(), '890 Rue Ibn Battuta, Fes', 'fes2@example.com', 'Aswak Fes', '0534455667', floor(random() * 100) + 1),
+(NOW(), NOW(), '123 Avenue Allal Ben Abdellah, Oujda', 'oujda2@example.com', 'Carrefour Oujda', '0536677889', floor(random() * 100) + 1),
+(NOW(), NOW(), '234 Boulevard Mohammed V, Kenitra', 'kenitra2@example.com', 'Marjane Kenitra', '0539900112', floor(random() * 100) + 1),
+(NOW(), NOW(), '345 Rue Ahmed El Maanouni, Sale', 'sale2@example.com', 'Aswak Sale', '0523344556', floor(random() * 100) + 1),
+(NOW(), NOW(), '456 Avenue Ibn Sina, Temara', 'temara2@example.com', 'Carrefour Temara', '0531122334', floor(random() * 100) + 1),
+(NOW(), NOW(), '567 Avenue Hassan II, Mohammedia', 'mohammedia2@example.com', 'Marjane Mohammedia', '0523344556', floor(random() * 100) + 1),
+(NOW(), NOW(), '678 Boulevard Mohammed VI, El Jadida', 'eljadida2@example.com', 'Aswak El Jadida', '0521122334', floor(random() * 100) + 1),
+-- ...
+(NOW(), NOW(), '789 Avenue Mohammed V, Casablanca', 'casablanca40@example.com', 'Acima Casablanca', '0523344556', floor(random() * 100) + 1);

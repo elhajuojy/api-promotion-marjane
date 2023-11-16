@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/adminCentre")
+@RequestMapping("/api/v1/admin_centres")
 public class AuthentificationController {
 
 
@@ -34,4 +34,5 @@ public class AuthentificationController {
     public AdminCentreDto login(@RequestBody AdminCentreDto adminCentreDto){
         return authentificationService.login(adminCentreDto);
     }
+
 }

@@ -31,10 +31,12 @@ public class Categorie {
     )
     private Collection<Centre> centres = new ArrayList<>();
 
-    @OneToOne
-    @JoinColumn(name = "rayon_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Rayon rayon;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+   private Promotion promotion;
 
 
 

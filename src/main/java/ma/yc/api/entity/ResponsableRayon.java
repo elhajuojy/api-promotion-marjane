@@ -12,11 +12,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Table(name="responsable_rayon")
-public class ResponsableRayon {
+public class ResponsableRayon extends AbstractEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     private String nom;
     private String prenom;
     private String email;

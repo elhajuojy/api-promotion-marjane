@@ -12,10 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class Produit {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id ;
+public class Produit extends AbstractEntity {
+
     private String nom ;
     private String description ;
     private String image;

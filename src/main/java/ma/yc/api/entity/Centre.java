@@ -14,33 +14,38 @@ import java.util.Collection;
 @Data
 @Builder
 @Entity
-public class Centre {
+public class Centre extends AbstractEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ville_id")
-    private Ville ville;
+
     private String nom;
     private String adresse;
     private String tel;
     private String email;
+
+
     @ManyToMany
     @JoinTable(
             name = "categorie_centre",
             joinColumns = { @JoinColumn(name = "center_id") },
             inverseJoinColumns = { @JoinColumn(name = "categorie_id") }
     )
+
     private Collection<Categorie> categories = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ville_id")
+    private Ville ville;
+
+
     @OneToOne(mappedBy = "centre",cascade = CascadeType.ALL)
     private AdminCentre admin_centre;
+
     @OneToMany(mappedBy = "centre",cascade = CascadeType.ALL)
     private Collection<Rayon> rayons = new ArrayList<>();
+
     @OneToMany(mappedBy = "centre",cascade = CascadeType.ALL)
     private Collection<ResponsableRayon> responsableRayons = new ArrayList<>();
-    @OneToMany
-    private Collection<Promotion> promotions = new ArrayList<>();
+
 
 
 

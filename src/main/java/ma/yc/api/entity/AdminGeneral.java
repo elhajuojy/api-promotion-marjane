@@ -13,18 +13,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "admin_general")
-public class AdminGeneral {
+public class AdminGeneral extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nom;
-    private String prenom;
-    @Email
-    @Column(unique=true)
-    private String email;
-    private String password;
-    private String username;
+
+    private String lastAccess;
+
+
 
 
 }

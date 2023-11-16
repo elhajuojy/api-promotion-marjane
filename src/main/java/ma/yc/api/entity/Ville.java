@@ -15,14 +15,15 @@ import java.util.Collection;
 @NoArgsConstructor
 @Data
 @Builder
-public class Ville {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Ville extends AbstractEntity {
+
     private String nom;
     private String codePostal;
+    private String slug;
+    private String image;
     @OneToMany(mappedBy = "ville")
     private Collection<Centre> centres = new ArrayList<>();
+
 
 
 }
