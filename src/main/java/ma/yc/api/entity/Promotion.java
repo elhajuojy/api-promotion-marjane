@@ -34,5 +34,9 @@ public class Promotion {
     @OneToMany(mappedBy = "promotion",fetch = FetchType.EAGER)
     private Collection<Produit> produits = new ArrayList<>() ;
 
+    @OneToMany(mappedBy = "promotion",fetch = FetchType.EAGER)
+    private Collection<Categorie> categories = new ArrayList<>() ;
+
+
 
 }

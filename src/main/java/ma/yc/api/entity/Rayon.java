@@ -13,16 +13,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Rayon {
-    @Id
-    private int id;
+public class Rayon extends AbstractEntity {
+
     private String nom;
     private String description;
     private String image;
-    @OneToOne(mappedBy = "rayon")
+    private String slug;
+    @ManyToOne
     private Categorie categorie;
     @OneToOne
-    private Responsable responsable;
+    private ResponsableRayon responsableRayon;
 
     @ManyToOne
     private Centre centre;

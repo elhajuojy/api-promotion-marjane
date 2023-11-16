@@ -29,6 +29,14 @@ public class PromotionController {
         return this.promotionService.getAll();
     }
 
+    @GetMapping("/{id}/produits")
+    public List<ProduitDto> getProduits(@PathVariable("id") Long id){
+        // TODO: 15/11/2023 implement this method
+//        return this.promotionService.getProduits(id);
+        return null;
+
+    }
+
     @PostMapping("/product")
     public ResponseEntity<?> promotionProduct(@RequestBody ProduitDto produitDto, PromotionDto promotionDto){
         try{

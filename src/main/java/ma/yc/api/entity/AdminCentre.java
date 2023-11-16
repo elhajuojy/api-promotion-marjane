@@ -13,16 +13,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Table(name = "admin_centre")
-public class AdminCentre {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class AdminCentre extends User {
 
-    private String username;
-    private String nom;
-    private String prenom;
-    private String email;
-    private String password;
     @ManyToOne
     private Ville ville ;
     @OneToOne

@@ -1,6 +1,6 @@
 package ma.yc.api.impl;
 
-import ma.yc.api.entity.Responsable;
+import ma.yc.api.entity.ResponsableRayon;
 import ma.yc.api.util.Utils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,24 +10,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DisplayName("Test de la classe ResponsableRayonAuthentificationServiceImpl")
-class ResponsableRayonAuthentificationServiceImplTest {
+class ResponsableRayonRayonAuthentificationServiceImplTest {
 
     @Test()
     @DisplayName("Test de la methode login")
     void login() {
-        Responsable responsable = new Responsable();
-        responsable.setEmail("email@gmail.com");
-        responsable.setId(1);
-        responsable.setNom("nom");
-        responsable.setPrenom("prenom");
-        responsable.setUsername("username");
-        responsable.setPassword("password");
+        ResponsableRayon responsableRayon = new ResponsableRayon();
+        responsableRayon.setEmail("email@gmail.com");
+        responsableRayon.setId(1);
+        responsableRayon.setNom("nom");
+        responsableRayon.setPrenom("prenom");
+        responsableRayon.setUsername("username");
+        responsableRayon.setPassword("password");
         //mocking the return from the findbyEmail method
 
-        assertNotNull(responsable);
-        assertNotEquals(null,responsable);
-        assertEquals("password",responsable.getPassword());
-        assertEquals(1,responsable.getId());
+        assertNotNull(responsableRayon);
+        assertNotEquals(null, responsableRayon);
+        assertEquals("password", responsableRayon.getPassword());
+        assertEquals(1, responsableRayon.getId());
 
     }
 
@@ -43,23 +43,23 @@ class ResponsableRayonAuthentificationServiceImplTest {
     @Test
     @DisplayName("Test de la methode register by testing if the email is valid and if the password is hashed and information are correct ")
     void register() {
-        Responsable responsable = new Responsable();
-        responsable.setEmail("email@gmail.com");
-        responsable.setId(1);
-        responsable.setNom("nom");
-        responsable.setPrenom("prenom");
-        responsable.setUsername("username");
-        responsable.setPassword("password");
+        ResponsableRayon responsableRayon = new ResponsableRayon();
+        responsableRayon.setEmail("email@gmail.com");
+        responsableRayon.setId(1);
+        responsableRayon.setNom("nom");
+        responsableRayon.setPrenom("prenom");
+        responsableRayon.setUsername("username");
+        responsableRayon.setPassword("password");
 
         String emailFromDbExample = "email@gmail.com";
-        assertTrue(Utils.verifyEmail(responsable.getEmail()));
-        assertNotNull(responsable);
-        assertEquals(emailFromDbExample, responsable.getEmail());
-        assertEquals(1,responsable.getId());
-        assertEquals("nom",responsable.getNom());
-        assertEquals("prenom",responsable.getPrenom());
-        assertEquals("username",responsable.getUsername());
-        assertNotNull(responsable.getPassword());
+        assertTrue(Utils.verifyEmail(responsableRayon.getEmail()));
+        assertNotNull(responsableRayon);
+        assertEquals(emailFromDbExample, responsableRayon.getEmail());
+        assertEquals(1, responsableRayon.getId());
+        assertEquals("nom", responsableRayon.getNom());
+        assertEquals("prenom", responsableRayon.getPrenom());
+        assertEquals("username", responsableRayon.getUsername());
+        assertNotNull(responsableRayon.getPassword());
 
     }
     @Test

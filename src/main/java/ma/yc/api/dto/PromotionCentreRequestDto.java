@@ -12,4 +12,6 @@ import lombok.NoArgsConstructor;
 public class PromotionCentreRequestDto {
     private String status;
     private Long centre_id;
+    private PromotionDto promotionDto;
+
 }
