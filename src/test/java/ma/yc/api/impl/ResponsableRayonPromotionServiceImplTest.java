@@ -47,7 +47,7 @@ class ResponsableRayonPromotionServiceImplTest {
     void findResponsableById() {
         Long responsableId = 1L ;
         ResponsableRayon responsableRayon = new ResponsableRayon();
-        responsableRayon.setId(1);
+        responsableRayon.setId(1L);
 
         Optional<ResponsableRayon> responsables = Optional.of(
                 responsableRayon

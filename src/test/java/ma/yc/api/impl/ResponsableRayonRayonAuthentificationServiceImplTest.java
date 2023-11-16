@@ -17,7 +17,7 @@ class ResponsableRayonRayonAuthentificationServiceImplTest {
     void login() {
         ResponsableRayon responsableRayon = new ResponsableRayon();
         responsableRayon.setEmail("email@gmail.com");
-        responsableRayon.setId(1);
+        responsableRayon.setId(1L);
         responsableRayon.setNom("nom");
         responsableRayon.setPrenom("prenom");
         responsableRayon.setUsername("username");
@@ -45,7 +45,7 @@ class ResponsableRayonRayonAuthentificationServiceImplTest {
     void register() {
         ResponsableRayon responsableRayon = new ResponsableRayon();
         responsableRayon.setEmail("email@gmail.com");
-        responsableRayon.setId(1);
+        responsableRayon.setId(1L);
         responsableRayon.setNom("nom");
         responsableRayon.setPrenom("prenom");
         responsableRayon.setUsername("username");
