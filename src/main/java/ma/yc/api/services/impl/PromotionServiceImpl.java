@@ -21,11 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -100,22 +98,37 @@ public class PromotionServiceImpl implements PromotionService {
         return null;
     }
 
+
+
     @Override
     public Collection<PromotionDto> consulterListPromotionPourResponsableRayon(int id) {
-        logger.info("consulterListPromotionPourResponsableRayon");
+        logger.info("consulter List Promotion Par Responsable Rayon");
         Collection<PromotionDto> promotionDtos = new ArrayList<>();
         isCurrentTimeInRange();
+
         Long idLong = Long.valueOf(id);
 
+
         Optional<ResponsableRayon> responsableRayon = responsableRayonRepository.findById(idLong);
+
         if (responsableRayon.isPresent()){
-            // TODO: 15/11/2023 GET PROMOTION RELATED TO RESPONSABLE RAYON
+            // : 15/11/2023 GET PROMOTION RELATED TO RESPONSABLE RAYON
                 responsableRayon.get().getRayon().getCategorie().getProduits().forEach(
                         produit -> {
-                            promotionDtos.add(PromotiomMapper.promotionMapper.toDto(produit.getPromotion()));
+                            // : 16/11/2023 verifie si proudit valable ou pas
+                            Date dateFin = produit.getPromotion().getDateFin();
+                            Date dateDebut = produit.getPromotion().getDateDebut();
+
+                            if (produit.getQuantite() > 0 &&  !dateDebut.before(new Date()) && !dateFin.after(new Date())){
+                                promotionDtos.add(PromotiomMapper.promotionMapper.toDto(produit.getPromotion()));
+                            }
+
                         }
+
                 );
 
+                promotionDtos.add(PromotiomMapper.promotionMapper.toDto(responsableRayon.get().getRayon().getCategorie().getPromotion()));
+                return promotionDtos;
 
 
         }else {
@@ -124,7 +137,6 @@ public class PromotionServiceImpl implements PromotionService {
         }
 
 
-        return null;
     }
 
     public  boolean isCurrentTimeInRange() {
