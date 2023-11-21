@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.Optional;
 
 
-@Repository
 public interface StatisticsPromotionsAuNiveauDuRoyaumeRepository extends JpaRepository<Promotion ,Long> {
 
     public Optional<Collection<Promotion>> findAllByStatus(StatusPromotion statusPromotion);

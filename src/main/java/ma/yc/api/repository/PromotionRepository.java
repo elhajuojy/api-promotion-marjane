@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 
 
-@Repository
 public interface PromotionRepository extends JpaRepository<Promotion,Long> {
     public Promotion findByDescription(String description);
     public Collection<Promotion> findAllByStatus(StatusPromotion status);
