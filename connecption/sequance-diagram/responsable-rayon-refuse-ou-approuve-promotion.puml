@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+ResponsablyRayon -> Server : Demande  la liste des promotion
+alt verfie temp entre 8 : 12
+    Server -> ResponsablyRayon : la list de promotion
+    ResponsablyRayon -> Server : approuve ou rejette une promotion
+    Server -> Server : verfie le temp entre 8 : 12 et les donne de promotion
+   alt si approuve
+        Server -> ResponsablyRayon : promotion approuve
+    else
+        Server -> ResponsablyRayon : promotion rejette
+    end
+
+else
+    Server -> ResponsablyRayon : aucune promotion
+end
+
+@enduml

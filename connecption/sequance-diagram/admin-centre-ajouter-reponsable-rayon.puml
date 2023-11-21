@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+AdminCentre -> Server : Request pour ajouter \n un nouveau compte responsable rayon
+Server -> Database : Ajout du compte
+alt compte valide
+    Server -> AdminCentre : Confirmation de l'ajout
+else compte invalide
+    Server -> AdminCentre : Erreur de l'ajout
+end
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+AdminGeneral -> Server : Ajouter un amdinistrateur Centre
+Server -> Server : Vérifier les données
+alt données valides
+    Server -> database : Ajouter l'administrateur
+    alt ajouter admin a la base de données
+        database -> Server : ok
+        Server -> AdminGeneral : ok
+    else erreur ajout admin a la base de données
+        database -> Server : erreur
+        Server -> AdminGeneral : erreur
+    end
+else données invalides
+    Server -> AdminGeneral : Erreur
+end
+
+@enduml
