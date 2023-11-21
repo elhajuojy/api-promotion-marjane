@@ -30,13 +30,13 @@ public class Promotion {
     private StatusPromotion status;
     private Date dateDebut;
     private Date dateFin;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "centre_id")
     private Centre centre;
-    @OneToMany(mappedBy = "promotion",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "promotion",fetch = FetchType.LAZY)
     private Collection<Produit> produits = new ArrayList<>() ;
 
-    @OneToMany(mappedBy = "promotion",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "promotion",fetch = FetchType.LAZY)
     private Collection<Categorie> categories = new ArrayList<>() ;
 
 

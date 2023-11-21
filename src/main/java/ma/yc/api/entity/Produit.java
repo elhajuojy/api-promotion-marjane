@@ -21,10 +21,10 @@ public class Produit extends AbstractEntity {
     private String image;
     private double prix;
     private int quantite;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categorie_id")
     private Categorie categorie;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "promotion_id")
     private Promotion promotion;
     @ManyToOne(fetch = FetchType.LAZY)

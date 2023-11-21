@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import ma.yc.api.entity.Produit;
 import ma.yc.api.enums.StatusPromotion;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 @AllArgsConstructor
@@ -23,5 +24,5 @@ public class PromotionDto {
     private Date dateDebut;
     private Date dateFin;
     @Schema(description = "la list des promotions concrene par cette promotion")
-    private Collection<Produit> produits;
+    private Collection<ProduitDto> produits = new ArrayList<>();
 }

@@ -1,0 +1,1651 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Promotion API",
+    "description": "Promotion API description POUR GESTION DES PROMOTIONS",
+    "contact": {
+      "name": "Squad DIGITAL YOUCODE API",
+      "email": "marjane.ma"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/",
+      "description": "Serveur de dev"
+    },
+    {
+      "url": "http://localhost:8080/",
+      "description": "Serveur de recette"
+    }
+  ],
+  "paths": {
+    "/api/v1/statistics/promotion/centre": {
+      "get": {
+        "tags": [
+          "statistique-promotion-au-niveau-centre-controller"
+        ],
+        "operationId": "listPromotion",
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PromotionDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "statistique-promotion-au-niveau-centre-controller"
+        ],
+        "operationId": "StatisticPromotionCentre",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PromotionCentreRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PromotionStatistique"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/responsables-promotion": {
+      "post": {
+        "tags": [
+          "approuver-ou-refuser-promotion-controller"
+        ],
+        "operationId": "approuverOuRefuserPromotion",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResponsablePromotionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponsablePromotionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/responsable-rayon/register": {
+      "post": {
+        "tags": [
+          "responsable-auth-controller"
+        ],
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResponsableDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponsableDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/responsable-rayon/login": {
+      "post": {
+        "tags": [
+          "responsable-auth-controller"
+        ],
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResponsableDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponsableDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/promotions/product": {
+      "post": {
+        "tags": [
+          "promotion-controller"
+        ],
+        "operationId": "promotionProduct",
+        "parameters": [
+          {
+            "name": "promotionDto",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PromotionDto"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProduitDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agenets-caisse/register": {
+      "post": {
+        "tags": [
+          "agent-caisse-auth-controller"
+        ],
+        "operationId": "register_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentCaisseDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentCaisseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agenets-caisse/login": {
+      "post": {
+        "tags": [
+          "agent-caisse-auth-controller"
+        ],
+        "operationId": "login_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentCaisseDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentCaisseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agenets-caisse/clients": {
+      "post": {
+        "tags": [
+          "client-management-controller"
+        ],
+        "operationId": "ajouterClient",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientRequestDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admins-center/register": {
+      "post": {
+        "tags": [
+          "admin-center-management-controller"
+        ],
+        "operationId": "register_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminCentreDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminCentreDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin_centres/login": {
+      "post": {
+        "tags": [
+          "authentification-controller"
+        ],
+        "operationId": "login_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminCentreDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminCentreDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin-general/register": {
+      "post": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "register_3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminGeneralDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminGeneralDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin-general/register/admin-centre": {
+      "post": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "register_4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminCentreDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminCentreDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin-general/login": {
+      "post": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "login_3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminGeneralDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminGeneralDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin-centre/agents-caisse": {
+      "post": {
+        "tags": [
+          "agent-caisse-management-controller"
+        ],
+        "operationId": "createAgentCaisse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentCaisseDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentCaisseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "post": {
+        "tags": [
+          "promotion-controller"
+        ],
+        "operationId": "addPromotion_1",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PromotionCentreRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/statistics/promotions/royaume": {
+      "get": {
+        "tags": [
+          "statistics-promotions-au-niveau-du-royaume-controller"
+        ],
+        "operationId": "getStatisticsPromotionsAuNiveauDuRoyaume",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PromotionStatistiques"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/responsables-rayon/{id}/promotions": {
+      "get": {
+        "tags": [
+          "constuler-list-promotion-controller"
+        ],
+        "operationId": "consulterListPromotionParId",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PromotionDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/responsables-rayon/promotions": {
+      "get": {
+        "tags": [
+          "constuler-list-promotion-controller"
+        ],
+        "operationId": "consulterListPromotion",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PromotionDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/responsable-rayon/resetPassword": {
+      "get": {
+        "tags": [
+          "responsable-auth-controller"
+        ],
+        "operationId": "resetPassword",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/responsable-rayon/refershToken": {
+      "get": {
+        "tags": [
+          "responsable-auth-controller"
+        ],
+        "operationId": "refershToken",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/responsable-rayon/logout": {
+      "get": {
+        "tags": [
+          "responsable-auth-controller"
+        ],
+        "operationId": "logout",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/promotions": {
+      "get": {
+        "tags": [
+          "promotion-controller"
+        ],
+        "operationId": "getAll",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PromotionDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/promotions/{id}/produits": {
+      "get": {
+        "tags": [
+          "promotion-controller"
+        ],
+        "operationId": "getProduits",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProduitDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agenets-caisse/resetPassword": {
+      "get": {
+        "tags": [
+          "agent-caisse-auth-controller"
+        ],
+        "operationId": "resetPassword_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agenets-caisse/refershToken": {
+      "get": {
+        "tags": [
+          "agent-caisse-auth-controller"
+        ],
+        "operationId": "refershToken_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agenets-caisse/logout": {
+      "get": {
+        "tags": [
+          "agent-caisse-auth-controller"
+        ],
+        "operationId": "logout_1",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin_centres/logout": {
+      "get": {
+        "tags": [
+          "authentification-controller"
+        ],
+        "operationId": "logout_2",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin-general/resetPassword": {
+      "get": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "resetPassword_2",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin-general/refershToken": {
+      "get": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "refershToken_2",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin-general/logout": {
+      "get": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "logout_3",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin-general/admin-centre/{id}": {
+      "delete": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "deleteAdminCentre",
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Achat": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "version": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminCentre": {
+        "required": [
+          "email",
+          "nom",
+          "password",
+          "prenom",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "version": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nom": {
+            "type": "string"
+          },
+          "prenom": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "telephone": {
+            "maxLength": 10,
+            "minLength": 0,
+            "pattern": "(^$|[0-9]{10})",
+            "type": "string"
+          },
+          "ville": {
+            "$ref": "#/components/schemas/Ville"
+          },
+          "centre": {
+            "$ref": "#/components/schemas/Centre"
+          }
+        }
+      },
+      "Categorie": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nom": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "produits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Produit"
+            }
+          },
+          "centres": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Centre"
+            }
+          },
+          "rayon": {
+            "$ref": "#/components/schemas/Rayon"
+          },
+          "promotion": {
+            "$ref": "#/components/schemas/Promotion"
+          }
+        }
+      },
+      "Centre": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "version": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nom": {
+            "type": "string"
+          },
+          "adresse": {
+            "type": "string"
+          },
+          "tel": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Categorie"
+            }
+          },
+          "ville": {
+            "$ref": "#/components/schemas/Ville"
+          },
+          "admin_centre": {
+            "$ref": "#/components/schemas/AdminCentre"
+          },
+          "rayons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Rayon"
+            }
+          },
+          "responsableRayons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResponsableRayon"
+            }
+          }
+        }
+      },
+      "Produit": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "version": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nom": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "prix": {
+            "type": "number",
+            "format": "double"
+          },
+          "quantite": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "categorie": {
+            "$ref": "#/components/schemas/Categorie"
+          },
+          "promotion": {
+            "$ref": "#/components/schemas/Promotion"
+          },
+          "achat": {
+            "$ref": "#/components/schemas/Achat"
+          }
+        },
+        "description": "la list des promotions concrene par cette promotion"
+      },
+      "Promotion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "precentage": {
+            "type": "number",
+            "format": "double"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACCPETER",
+              "REFUSER",
+              "EN_ATTENTE"
+            ]
+          },
+          "dateDebut": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateFin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "centre": {
+            "$ref": "#/components/schemas/Centre"
+          },
+          "produits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Produit"
+            }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Categorie"
+            }
+          }
+        }
+      },
+      "PromotionCentreRequestDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "centre_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "promotionDto": {
+            "$ref": "#/components/schemas/PromotionDto"
+          }
+        }
+      },
+      "PromotionDto": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "precentage": {
+            "type": "number",
+            "format": "double"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACCPETER",
+              "REFUSER",
+              "EN_ATTENTE"
+            ]
+          },
+          "dateDebut": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateFin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "produits": {
+            "type": "array",
+            "description": "la list des promotions concrene par cette promotion",
+            "items": {
+              "$ref": "#/components/schemas/Produit"
+            }
+          }
+        }
+      },
+      "Rayon": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "version": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nom": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "categorie": {
+            "$ref": "#/components/schemas/Categorie"
+          },
+          "responsableRayon": {
+            "$ref": "#/components/schemas/ResponsableRayon"
+          },
+          "centre": {
+            "$ref": "#/components/schemas/Centre"
+          }
+        }
+      },
+      "ResponsableRayon": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "version": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nom": {
+            "type": "string"
+          },
+          "prenom": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "ville": {
+            "$ref": "#/components/schemas/Ville"
+          },
+          "centre": {
+            "$ref": "#/components/schemas/Centre"
+          },
+          "rayon": {
+            "$ref": "#/components/schemas/Rayon"
+          }
+        }
+      },
+      "Ville": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "version": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nom": {
+            "type": "string"
+          },
+          "codePostal": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "centres": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Centre"
+            }
+          }
+        }
+      },
+      "PromotionStatistique": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACCPETER",
+              "REFUSER",
+              "EN_ATTENTE"
+            ]
+          },
+          "date_applique": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "produits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProuitStatisticDto"
+            }
+          }
+        }
+      },
+      "ProuitStatisticDto": {
+        "type": "object",
+        "properties": {
+          "nom": {
+            "type": "string"
+          },
+          "prix": {
+            "type": "number",
+            "format": "double"
+          },
+          "quantite": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ResponsablePromotionDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACCPETER",
+              "REFUSER",
+              "EN_ATTENTE"
+            ]
+          }
+        }
+      },
+      "ResponsablePromotionRequest": {
+        "type": "object",
+        "properties": {
+          "responsableId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "promotionList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResponsablePromotionDto"
+            }
+          }
+        }
+      },
+      "ResponsablePromotionResponse": {
+        "type": "object",
+        "properties": {
+          "promotionDtos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResponsablePromotionDto"
+            }
+          }
+        }
+      },
+      "ResponsableDto": {
+        "type": "object",
+        "properties": {
+          "nom": {
+            "type": "string"
+          },
+          "prenom": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      },
+      "ProduitDto": {
+        "type": "object",
+        "properties": {
+          "nom": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "prix": {
+            "type": "number",
+            "format": "double"
+          },
+          "quantite": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_centre": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "AgentCaisseDto": {
+        "required": [
+          "nom",
+          "password",
+          "prenom",
+          "telephone"
+        ],
+        "type": "object",
+        "properties": {
+          "nom": {
+            "type": "string"
+          },
+          "prenom": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "telephone": {
+            "pattern": "^\\+212[5-7][0-9]{8}$",
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "ClientRequestDto": {
+        "type": "object",
+        "properties": {
+          "nom": {
+            "type": "string"
+          },
+          "prenom": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "telephone": {
+            "type": "string"
+          },
+          "adresse": {
+            "type": "string"
+          },
+          "ville": {
+            "type": "string"
+          }
+        }
+      },
+      "AdminCentreDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "nom": {
+            "type": "string"
+          },
+          "prenom": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "id_admCentre": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "AdminGeneralDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "nom": {
+            "type": "string"
+          },
+          "prenom": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "PromotionStatistiques": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACCPETER",
+              "REFUSER",
+              "EN_ATTENTE"
+            ]
+          },
+          "promoitons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PromotionStatistique"
+            }
+          }
+        }
+      }
+    }
+  }
+}
