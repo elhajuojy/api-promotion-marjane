@@ -1,6 +1,7 @@
 package ma.yc.api.controller.Promotion;
 
 
+import lombok.extern.log4j.Log4j2;
 import ma.yc.api.dto.ProduitDto;
 import ma.yc.api.dto.PromotionDto;
 import ma.yc.api.exceptions.business.NotFoundException;
@@ -11,22 +12,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/v1/promotions")
-public class    PromotionController {
+@Log4j2
+public class PromotionController implements PromotionListner{
 
     private PromotionService promotionService;
+    private PromotionManger promotionManger;
 
     @Autowired
-    public PromotionController(PromotionService promotionService) {
+    public PromotionController(PromotionService promotionService, PromotionManger promotionManger) {
         this.promotionService = promotionService;
+        this.promotionManger = promotionManger;
+        this.promotionManger.registerListener(this);
+
     }
 
     @GetMapping
     public List<PromotionDto> getAll(){
 //        throw new RuntimeException("not implemented yet");
         return this.promotionService.getAll();
+
     }
 
     @GetMapping("/{id}/produits")
@@ -47,4 +55,9 @@ public class    PromotionController {
         }
     }
 
+    @Override
+    public void notifyPromotion() {
+        log.info("PromotionManager notify me !! ");
+        this.getAll();
+    }
 }

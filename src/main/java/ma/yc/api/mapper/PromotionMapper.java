@@ -9,8 +9,9 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
-public interface PromotiomMapper {
-    PromotiomMapper INSTANCE = Mappers.getMapper(PromotiomMapper.class);
+@Mapper()
+public interface PromotionMapper {
+    PromotionMapper INSTANCE = Mappers.getMapper(PromotionMapper.class);
 
     Promotion toEntity(PromotionDto promotionDto);
 
