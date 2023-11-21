@@ -54,6 +54,7 @@ Organiser votre projet avec un outil de votre choix
 - swagger : http://localhost:8080/swagger-ui.html
 - 
 ## **Diagramme de classe**
+![Class diagram](./api-ref/marjane%20api%20promotion%20partie%202%20digram%20de%20calss.jpg)
 
 ## **Diagramme de séquence**
 
