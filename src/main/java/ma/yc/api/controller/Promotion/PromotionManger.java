@@ -1,11 +1,13 @@
 package ma.yc.api.controller.Promotion;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Scope("singleton")
 public class PromotionManger {
 
     private final List<PromotionListner> promotionListner = new ArrayList<>();

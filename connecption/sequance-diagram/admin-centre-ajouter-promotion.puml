@@ -1,6 +1,6 @@
 @startuml
 
-AdminCentre -> Server : Request pour ajouter un \n nouvel promotion
+AdminCentre -> Server : Request pour ajouter une \n nouvel promotion
 Server -> Database : Ajouter le nouveau promotion
 Server -> AdminCentre : message de confirmation \n de l'ajout du promotion
 @enduml

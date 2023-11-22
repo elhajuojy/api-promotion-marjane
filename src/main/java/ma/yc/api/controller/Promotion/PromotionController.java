@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
 @RestController
@@ -31,9 +33,9 @@ public class PromotionController implements PromotionListner{
     }
 
     @GetMapping
-    public List<PromotionDto> getAll(){
+    public List<PromotionDto> getAll() throws ExecutionException, InterruptedException {
 //        throw new RuntimeException("not implemented yet");
-        return this.promotionService.getAll();
+        return this.getAllPromotion().get();
 
     }
 
@@ -57,7 +59,10 @@ public class PromotionController implements PromotionListner{
 
     @Override
     public void notifyPromotion() {
-        log.info("PromotionManager notify me !! ");
-        this.getAll();
+        log.info("Notification de promotion envoyé ");
+        this.getAllPromotion();
+    }
+    public CompletableFuture<List<PromotionDto>> getAllPromotion(){
+        return CompletableFuture.supplyAsync(()->this.promotionService.getAll());
     }
 }

@@ -5,11 +5,13 @@ autonumber
 
 ResponsablyRayon -> Server : Demande  la liste des promotion
 alt verfie temp entre 8 : 12
+    AdminCentre -> Server : Consulter la list promotios
     Server -> ResponsablyRayon : la list de promotion
     ResponsablyRayon -> Server : approuve ou rejette une promotion
     Server -> Server : verfie le temp entre 8 : 12  \net les donne de promotion
    alt si approuve
         Server -> ResponsablyRayon : promotion approuve
+        Server -> AdminCentre : Consulter la list promotios
     else
         Server -> ResponsablyRayon : promotion rejette
     end
