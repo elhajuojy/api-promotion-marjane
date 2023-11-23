@@ -1,8 +1,8 @@
 package ma.yc.api.services;
 
-import ma.yc.api.dto.ClientRequestDto;
+import ma.yc.api.dto.ClientDto;
 
 public interface ClientService {
-    public ClientRequestDto ajouterClient(ClientRequestDto clientRequestDto);
+    public ClientDto ajouterClient(ClientDto clientDto);
 
 }

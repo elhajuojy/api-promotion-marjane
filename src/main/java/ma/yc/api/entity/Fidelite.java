@@ -19,6 +19,7 @@ public class Fidelite {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private int id;
+    private String code;
     private int nombreDePoint;
     private int nombreDePointUtilise;
     @OneToOne(mappedBy = "fidelite")

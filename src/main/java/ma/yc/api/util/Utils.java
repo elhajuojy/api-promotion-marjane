@@ -18,4 +18,8 @@ public class Utils {
         return validEmail.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
 
     }
+
+    public static Integer generateRandomNumber(int i) {
+        return (int) (Math.random() * i);
+    }
 }

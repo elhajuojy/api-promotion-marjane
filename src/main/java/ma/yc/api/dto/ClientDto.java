@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class ClientRequestDto {
+public class ClientDto {
     private String nom;
     private String prenom;
     private String email;

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class ClientServiceImplTest {
+class ClientManagementServiceImplTest {
 
     Client client;
     @Mock

@@ -4,8 +4,13 @@ package ma.yc.api.controller.Promotion;
 import lombok.extern.log4j.Log4j2;
 import ma.yc.api.dto.ProduitDto;
 import ma.yc.api.dto.PromotionDto;
+import ma.yc.api.dto.ResponsableDto;
+import ma.yc.api.entity.ResponsableRayon;
 import ma.yc.api.exceptions.business.NotFoundException;
+import ma.yc.api.services.AuthentificationService;
+import ma.yc.api.services.EmailService;
 import ma.yc.api.services.PromotionService;
+import ma.yc.api.services.ResponsablePromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +27,21 @@ import java.util.logging.Logger;
 public class PromotionController implements PromotionListner{
 
     private PromotionService promotionService;
+    private EmailService emailService;
+    private AuthentificationService<ResponsableDto> responsablePromotionService;
+
     private PromotionManger promotionManger;
 
+
     @Autowired
-    public PromotionController(PromotionService promotionService, PromotionManger promotionManger) {
+    public PromotionController(PromotionService promotionService, PromotionManger promotionManger, AuthentificationService<ResponsableDto> responsablePromotionService
+    ,EmailService emailService
+    ) {
         this.promotionService = promotionService;
         this.promotionManger = promotionManger;
         this.promotionManger.registerListener(this);
+        this.responsablePromotionService = responsablePromotionService;
+        this.emailService = emailService;
 
     }
 
@@ -60,6 +73,7 @@ public class PromotionController implements PromotionListner{
     @Override
     public void notifyPromotion() {
         log.info("Notification de promotion envoyé ");
+        // TODO: 23/11/2023 send email to all responsable promotion by using emailService
         this.getAllPromotion();
     }
     public CompletableFuture<List<PromotionDto>> getAllPromotion(){
