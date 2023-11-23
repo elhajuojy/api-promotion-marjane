@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
 public interface PromotionStatistiqueMapper
 {
 
-    PromotionStatistiqueMapper promotionMapper = Mappers.getMapper(PromotionStatistiqueMapper.class);
+    PromotionStatistiqueMapper INSTANCE = Mappers.getMapper(PromotionStatistiqueMapper.class);
 
     @Mapping(target = "updatedAt", source = "promotionStatistique.date_applique")
     Promotion toEntity(PromotionStatistique promotionStatistique);

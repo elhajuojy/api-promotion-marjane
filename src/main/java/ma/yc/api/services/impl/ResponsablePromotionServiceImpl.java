@@ -26,7 +26,7 @@ public class ResponsablePromotionServiceImpl implements ResponsablePromotionServ
     public ResponsablePromotionServiceImpl(ResponsableRayonRepository responsableRayonRepository, PromotionRepository promotionRepository) {
         this.responsableRayonRepository = responsableRayonRepository;
         this.promotionRepository = promotionRepository;
-//        this.responsablePromotoinMapper = ResponsablePromotoinMapper.INSTANCE;
+        this.responsablePromotoinMapper = ResponsablePromotoinMapper.INSTANCE;
     }
     @Override
     public ResponsablePromotionResponse ApprouverOuRefuserPromotion(ResponsablePromotionRequest responsablePromotionRequest) {
@@ -44,7 +44,8 @@ public class ResponsablePromotionServiceImpl implements ResponsablePromotionServ
                 if (promotion.isPresent()){
                     promotion.get().setStatus(promotionDto.getStatus());
                     this.promotionRepository.save(promotion.get());
-                    response.getPromotionDtos().add(this.responsablePromotoinMapper.toDto(promotion.get()));
+                    response.getPromotionDtos().add(
+                            this.responsablePromotoinMapper.toDto(promotion.get()));
 
                 }
 //                else{

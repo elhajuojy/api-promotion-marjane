@@ -23,10 +23,12 @@ public class StatisticsPromotionsAuNiveauDuRoyaumeServiceImpl implements Statist
 
 
     private  StatisticsPromotionsAuNiveauDuRoyaumeRepository statisticsPromotionsAuNiveauDuRoyaumeRepository ;
+    private final PromotionStatistiqueMapper promotionStatistiqueMapper;
 
     @Autowired
     public StatisticsPromotionsAuNiveauDuRoyaumeServiceImpl(StatisticsPromotionsAuNiveauDuRoyaumeRepository statisticsPromotionsAuNiveauDuRoyaumeRepository  ) {
         this.statisticsPromotionsAuNiveauDuRoyaumeRepository = statisticsPromotionsAuNiveauDuRoyaumeRepository;
+        this.promotionStatistiqueMapper = PromotionStatistiqueMapper.INSTANCE;
     }
 
 
@@ -61,7 +63,7 @@ public class StatisticsPromotionsAuNiveauDuRoyaumeServiceImpl implements Statist
 
         if (promotionsList.isPresent()){
             for (Promotion promotion : promotionsList.get()){
-                PromotionStatistique promotionStatistique  = PromotionStatistiqueMapper.promotionMapper.toDto(promotion);
+                PromotionStatistique promotionStatistique  = this.promotionStatistiqueMapper.toDto(promotion);
                 promotionStatistiques.add(promotionStatistique);
             }
             

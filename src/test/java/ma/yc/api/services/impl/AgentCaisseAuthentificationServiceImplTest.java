@@ -57,17 +57,17 @@ class AgentCaisseAuthentificationServiceImplTest {
 
     @Test
     void register() {
-        // TODO: 21/11/2023 mock the repository and test the register method
+        // : 21/11/2023 mock the repository and test the register method
         when(agentRepository.save(this.agentCaisse)).thenReturn(agentCaisse);
+
         assertEquals(agentCaisse,agentRepository.save(agentCaisse));
         verify(agentRepository).save(agentCaisse);
+
         assertEquals(agentCaisseDto.getEmail(),agentCaisse.getEmail());
         assertEquals(agentCaisseDto.getNom(),agentCaisse.getNom());
         assertEquals(agentCaisseDto.getPrenom(),agentCaisse.getPrenom());
         assertEquals(agentCaisseDto.getPassword(),agentCaisse.getPassword());
         assertEquals(agentCaisseDto.getTelephone(),agentCaisse.getTelephone());
-
-
 
 
     }
