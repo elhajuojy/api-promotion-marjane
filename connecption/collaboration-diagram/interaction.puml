@@ -1,0 +1,35 @@
+@startuml
+
+acteur "Admin Général"
+acteur "Admin"
+acteur "Responsable"
+base de données "Base de données"
+participant "Système" as sys
+participant "Agent de Caisse"
+participant "Client Marjane"
+
+"Admin Général" -> "Admin": Crée Admin (Email, Mot de passe)
+"Admin" -> "Admin": Envoie les identifiants de connexion par Email
+"Admin" -> "Admin": Se connecte et crée des promotions
+"Admin" -> "Base de données": Stocke les promotions
+"Admin" -> "Responsable": Affiche les promotions pour validation
+"Responsable" -> "Responsable": Approuve ou rejette la promotion avec un commentaire
+"Responsable" --> "sys": Statut d'approbation et commentaire
+si (Promotion approuvée ?) alors (oui)
+  "sys" -> "Base de données": Applique la promotion aux produits en stock
+sinon (non)
+  "sys" -> "Base de données": Marque la promotion comme non appliquée
+endif
+"Admin" -> "sys": Consulte les promotions appliquées et non appliquées
+si (Il est entre 8h et 12h) alors (oui)
+  "Responsable" -> "sys": Consulte les promotions
+sinon (non)
+  "Responsable" -> "sys": Promotions indisponibles
+endif
+"sys" -> "Base de données": Journalisation de toutes les opérations
+
+"Agent de Caisse" -> "Admin": Crée un client Marjane
+"Admin" -> "Client Marjane": Envoie le code et l'historique d'achat par Email
+
+@enduml
+
