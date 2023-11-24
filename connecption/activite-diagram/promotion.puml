@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+start
+:Administrateur général crée un Administrateur (Email, Mot de passe);
+:Administrateur envoie les identifiants de connexion à  \n l'Administrateur par courrier électronique;
+:Centre d'administration se connecte et crée des promotions;
+:Promotions stockées dans la base de données;
+:Promotions affichées au Responsable pour approbation;
+:Responsable approuve ou rejette la promotion;
+if (Promotion approuvée ?) then (oui)
+  :Promotion appliquée aux produits en stock;
+else (non)
+  :Promotion marquée comme non appliquée;
+endif
+:Centre d'administration visualise les promotions appliquées et non appliquées;
+if (L'heure est entre 8h et 12h) then (oui)
+  :Le Responsable peut voir les promotions;
+else (non)
+  :Promotions non disponibles;
+endif
+:Enregistrer toutes les opérations dans le système;
+@enduml
