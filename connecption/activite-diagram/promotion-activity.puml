@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:l’admin général gestion de \n chaque admin du centre par ville;
+:La gestion de promotion est gérée \n chaque jour  au niveau du centre;
+:crée une liste des promotions par catégorie des produits;
+:Admin Centre prend en charge la gestion **reseponable** rayon ;
+:Responable Rayon se connecte à son interface pour consulter
+ sa liste des promotions pour accepter ou refuser une promotion ;
+if (entre 8h-12h00 du matin ?) is (oui) then
+  :consulter la list promotion;
+else (no)
+  : aucune promotion ;
+  end
+endif
+ :accepter ou refuser un promotion ;
+ if (quantité du stock disponible dans le centre > ?) is (oui) then
+   :accepter la promotion en ajoutant un
+    commentaire quantité des produits disponible;
+ else (no)
+   :promotion  refuser;
+ endif
+: L’admin du Marjane consulte par la suite toutes les promotions
+    appliquées et non appliquées à son centre;
+stop
+
+@enduml
