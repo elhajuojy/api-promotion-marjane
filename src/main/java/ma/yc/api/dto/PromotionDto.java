@@ -16,6 +16,8 @@ import java.util.Date;
 @Data
 @Builder
 public class PromotionDto {
+
+    private Long id;
     private Date createdAt;
     private Date updatedAt;
     private Double precentage;

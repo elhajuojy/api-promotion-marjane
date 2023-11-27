@@ -45,11 +45,15 @@ public class PromotionController implements PromotionListner{
 
     }
 
-    @GetMapping
+
     public List<PromotionDto> getAll() throws ExecutionException, InterruptedException {
 //        throw new RuntimeException("not implemented yet");
         return this.getAllPromotion().get();
 
+    }
+    @GetMapping
+    public CompletableFuture<List<PromotionDto>> getAllPromotion(){
+        return CompletableFuture.supplyAsync(()->this.promotionService.getAll());
     }
 
     @GetMapping("/{id}/produits")
@@ -76,7 +80,5 @@ public class PromotionController implements PromotionListner{
         // TODO: 23/11/2023 send email to all responsable promotion by using emailService
         this.getAllPromotion();
     }
-    public CompletableFuture<List<PromotionDto>> getAllPromotion(){
-        return CompletableFuture.supplyAsync(()->this.promotionService.getAll());
-    }
+
 }

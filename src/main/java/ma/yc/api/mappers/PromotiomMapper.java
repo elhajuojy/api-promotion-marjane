@@ -16,6 +16,7 @@ public interface PromotiomMapper {
 
     @Mappings({
             @Mapping(target = "dateDebut", source = "promotion.dateDebut"),
+            @Mapping(target = "id", source = "promotion.id"),
             @Mapping(target = "dateFin", source = "promotion.dateFin"),
             @Mapping(target = "status", source = "promotion.status"),
     })
