@@ -17,4 +17,6 @@ public class Achat extends AbstractEntity{
     private Client client;
 
 
+
+
 }

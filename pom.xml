@@ -23,6 +23,11 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
         </dependency>
+        <dependency>
+            <groupId>ma.yc.api</groupId>
+            <artifactId>core-yc</artifactId>
+            <version>1.0.1</version>
+        </dependency>
 
         <dependency>
             <groupId>org.mindrot</groupId>

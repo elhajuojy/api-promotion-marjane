@@ -7,8 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Optional;
-
 @SpringBootApplication
 public class ApiPromotionMarjaneApplication {
 
@@ -16,6 +14,13 @@ public class ApiPromotionMarjaneApplication {
         SpringApplication.run(ApiPromotionMarjaneApplication.class, args);
     }
 
+
+    @Bean
+    CommandLineRunner commandLineRunner(){
+        return args -> {
+//            MainEntity main = new MainEntity();
+        };
+    }
 //    @Bean
 //    CommandLineRunner commandLineRunner(ResponsableRayonRepository repository){
         // TODO: 13/11/2023 save random data to database !!
