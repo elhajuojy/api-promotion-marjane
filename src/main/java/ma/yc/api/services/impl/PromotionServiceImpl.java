@@ -101,7 +101,7 @@ public class PromotionServiceImpl implements PromotionService {
 
     @Override
     public Collection<PromotionDto> consulterListPromotionPourResponsableRayon(int id) {
-        logger.info("consulter List Promotion Par Responsable Rayon");
+        logger.info("consulter List Promotion Par Responsable Rayon" +id);
         Collection<PromotionDto> promotionDtos = new ArrayList<>();
         isCurrentTimeInRange();
 
@@ -109,24 +109,28 @@ public class PromotionServiceImpl implements PromotionService {
 
 
         Optional<ResponsableRayon> responsableRayon = responsableRayonRepository.findById(idLong);
-
         if (responsableRayon.isPresent()){
             // : 15/11/2023 GET PROMOTION RELATED TO RESPONSABLE RAYON
+            // TODO: 29/11/2023 check if the getRayon is null or not
+            if (responsableRayon.get().getRayon() == null){
+                logger.error("Le responsable n'a pas de rayon");
+                throw new NotFoundException("Le responsable n'a pas de rayon");
+            }
                 responsableRayon.get().getRayon().getCategorie().getProduits().forEach(
                         produit -> {
                             // : 16/11/2023 verifie si proudit valable ou pas
                             Date dateFin = produit.getPromotion().getDateFin();
                             Date dateDebut = produit.getPromotion().getDateDebut();
 
-                            if (produit.getQuantite() > 0 &&  !dateDebut.before(new Date()) && !dateFin.after(new Date())){
+//                            if (produit.getQuantite() > 0 &&  !dateDebut.before(new Date()) && !dateFin.after(new Date())){
                                 promotionDtos.add(PromotiomMapper.INSTANCE.toDto(produit.getPromotion()));
-                            }
+//                            }
 
                         }
 
                 );
 
-                promotionDtos.add(PromotiomMapper.INSTANCE.toDto(responsableRayon.get().getRayon().getCategorie().getPromotion()));
+//                promotionDtos.add(PromotiomMapper.INSTANCE.toDto(responsableRayon.get().getRayon().getCategorie().getPromotion()));
                 return promotionDtos;
 
 
@@ -139,18 +143,18 @@ public class PromotionServiceImpl implements PromotionService {
     }
 
     public  boolean isCurrentTimeInRange() {
-        final LocalTime START_TIME = LocalTime.of(8, 0); // 8 AM
-        final LocalTime END_TIME = LocalTime.of(12, 0); // 12 PM
-//        LocalTime currentTime = LocalTime.of(7, 0);
-        LocalTime currentTime = LocalTime.now();
-
-        if (currentTime.isBefore(START_TIME) || currentTime.isAfter(END_TIME)) {
-            logger.error("les promotions soient consultables par les" +
-                    " responsable des rayon seulement entre 8h-12h00 du matin ,");
-            throw  new
-                    OutOfTimeExpection("les promotions soient consultables par les" +
-                    " responsable des rayon seulement entre 8h-12h00 du matin ,");
-        }
+//        final LocalTime START_TIME = LocalTime.of(8, 0); // 8 AM
+//        final LocalTime END_TIME = LocalTime.of(12, 0); // 12 PM
+////        LocalTime currentTime = LocalTime.of(7, 0);
+//        LocalTime currentTime = LocalTime.now();
+//
+//        if (currentTime.isBefore(START_TIME) || currentTime.isAfter(END_TIME)) {
+//            logger.error("les promotions soient consultables par les" +
+//                    " responsable des rayon seulement entre 8h-12h00 du matin ,");
+//            throw  new
+//                    OutOfTimeExpection("les promotions soient consultables par les" +
+//                    " responsable des rayon seulement entre 8h-12h00 du matin ,");
+//        }
 
         return true;
     }

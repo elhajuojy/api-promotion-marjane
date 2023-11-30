@@ -1,5 +1,6 @@
 package ma.yc.api.config;
 
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -11,9 +12,11 @@ import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Configuration
@@ -44,8 +47,14 @@ public class SecurityConfig {
         http.cors(Customizer.withDefaults());
         http.formLogin(Customizer.withDefaults());
         http.httpBasic(Customizer.withDefaults());
+        http.csrf(csrf->{
+            csrf.disable();
+        });
+
+
         return http.build();
     }
+
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
@@ -58,6 +67,7 @@ public class SecurityConfig {
                         "http://localhost:4200",
                         "https://localhost:4200"
                 ));
+        configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);

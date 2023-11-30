@@ -1,10 +1,7 @@
 package ma.yc.api.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "rayon")
 @Data
 public class Rayon extends AbstractEntity {
 
@@ -21,7 +19,7 @@ public class Rayon extends AbstractEntity {
     private String slug;
     @ManyToOne
     private Categorie categorie;
-    @OneToOne
+    @OneToOne(mappedBy = "rayon")
     private ResponsableRayon responsableRayon;
 
     @ManyToOne

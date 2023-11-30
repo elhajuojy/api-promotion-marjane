@@ -25,7 +25,8 @@ public class ResponsableRayon extends AbstractEntity{
     @JoinColumn(name="centre_id")
     private Centre  centre;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "rayon_id", referencedColumnName = "id")
     private Rayon rayon;
 
 }
