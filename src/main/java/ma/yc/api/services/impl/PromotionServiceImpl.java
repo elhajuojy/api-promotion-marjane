@@ -18,6 +18,8 @@ import ma.yc.api.services.PromotionService;
 import ma.yc.api.services.ResponsablePromotionService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
@@ -160,6 +162,13 @@ public class PromotionServiceImpl implements PromotionService {
     }
 
 
+    @Override
+    public Page<PromotionDto> getAll(int page, int size) {
+        logger.info(" page GET ALL PROMOTIONS");
+        PageRequest pageRequest = PageRequest.of(page,size);
+        Page<Promotion> promotions = this.promotionRepository.findAll(pageRequest);
+        Page<PromotionDto> promotionDtos = promotions.map(PromotiomMapper.INSTANCE::toDto);
 
-
+        return promotionDtos;
+    }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 
 
-public interface PromotionService {
+public interface PromotionService extends PagablePromotionService {
     public ProduitDto addPromotion(ProduitDto produitDto, PromotionDto promotionDto);
     public List<PromotionDto> getAll();
 

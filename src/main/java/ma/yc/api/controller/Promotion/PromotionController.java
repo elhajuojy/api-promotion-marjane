@@ -12,10 +12,12 @@ import ma.yc.api.services.EmailService;
 import ma.yc.api.services.PromotionService;
 import ma.yc.api.services.ResponsablePromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -46,15 +48,23 @@ public class PromotionController implements PromotionListner{
     }
 
 
-    public List<PromotionDto> getAll() throws ExecutionException, InterruptedException {
-//        throw new RuntimeException("not implemented yet");
-        return this.getAllPromotion().get();
+//    @GetMapping
+//    public List<PromotionDto> getAll()  {
+//        return this.promotionService.getAll();
+//
+//    }
+
+    @GetMapping
+    public Page<PromotionDto> getAll(@RequestParam int page, @RequestParam int size)  {
+        return this.promotionService.getAll(page,size);
+//        return this.promotionService.getAll();
 
     }
-    @GetMapping
-    public CompletableFuture<List<PromotionDto>> getAllPromotion(){
-        return CompletableFuture.supplyAsync(()->this.promotionService.getAll());
-    }
+
+
+
+
+
 
     @GetMapping("/{id}/produits")
     public List<ProduitDto> getProduits(@PathVariable("id") Long id){
@@ -78,7 +88,22 @@ public class PromotionController implements PromotionListner{
     public void notifyPromotion() {
         log.info("Notification de promotion envoyé ");
         // TODO: 23/11/2023 send email to all responsable promotion by using emailService
-        this.getAllPromotion();
+         CompletableFuture.runAsync(()->{
+                try {
+                 emailService.sendSimpleMessage("email@gmail.com",
+                            "Promotion",
+                         """
+                        
+                    <h1>Notification de promotion</h1>
+                    <p>Une promotion est ajouté</p>
+                    <p>Vous pouvez consulter la liste des promotions sur le lien suivant</p>
+                    <a href='http://localhost:4200/promotions'>Consulter les promotions</a>
+                                    """
+                         );
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+         });
     }
 
 }
