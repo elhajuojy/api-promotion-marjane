@@ -42,7 +42,6 @@ public class PromotionController implements PromotionListner{
         this.promotionManger.registerListener(this);
         this.responsablePromotionService = responsablePromotionService;
         this.emailService = emailService;
-
     }
 
 
