@@ -55,7 +55,7 @@ public class PromotionController implements PromotionListner{
 //    }
 
     @GetMapping
-    public Page<PromotionDto> getAll(@RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size)  {
+    public Page<PromotionDto> getAll(@RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size )  {
         return this.promotionService.getAll(page,size);
     }
 

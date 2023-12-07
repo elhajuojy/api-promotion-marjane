@@ -167,9 +167,6 @@ public class PromotionServiceImpl implements PromotionService {
         logger.info(" page GET ALL PROMOTIONS");
         page = (page == null) ? 0 : page;
         size = (size == null) ? 5 : size;
-        System.out.println("page = " + page);
-        System.out.println("size = " + size);
-
         PageRequest pageRequest = PageRequest.of(page,size);
 
         Page<Promotion> promotions = this.promotionRepository.findAll(pageRequest);
