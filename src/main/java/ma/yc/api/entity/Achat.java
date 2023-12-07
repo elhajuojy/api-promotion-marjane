@@ -2,11 +2,12 @@ package ma.yc.api.entity;
 
 import jakarta.persistence.*;
 import org.mapstruct.Mapper;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.util.Collection;
 
 @Entity
-public class Achat extends AbstractEntity{
+public class Achat extends AbstractEntity {
 
     private String dateAchat;
     private String montant;

@@ -7,5 +7,5 @@ import java.util.Collection;
 
 public interface PagablePromotionService {
 
-    public Page<PromotionDto> getAll(int page, int size);
+    public Page<PromotionDto> getAll(Integer page, Integer size);
 }

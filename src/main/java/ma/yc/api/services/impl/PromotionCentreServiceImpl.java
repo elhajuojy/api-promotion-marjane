@@ -2,6 +2,7 @@ package ma.yc.api.services.impl;
 
 import ma.yc.api.dto.PromotionCentreRequestDto;
 import ma.yc.api.dto.PromotionDto;
+import ma.yc.api.exceptions.business.NotFoundException;
 import ma.yc.api.mapper.PromotionCentreMapper;
 import ma.yc.api.mapper.PromotionMapper;
 import ma.yc.api.repository.PromotionRepository;
@@ -26,7 +27,20 @@ public class PromotionCentreServiceImpl implements PromotionCentreService {
 
         PromotionDto promotionDto = promotionCentreRequestDto.getPromotion();
         return this.promotionCentreMapper.toDto(this.promotionRepository.save(this.promotionMapper.toEntity(promotionDto)));
+    }
 
+    @Override
+    public void deletePromotion(Long id) {
+        this
+                .promotionRepository.findById(id).orElseThrow(()-> new NotFoundException("this promotion does not exists "));
+        this.promotionRepository.deleteById(id);
 
+    }
+
+    @Override
+    public void updatePromotion(PromotionCentreRequestDto promotionCentreRequestDto) {
+        PromotionDto promotionDto = promotionCentreRequestDto.getPromotion();
+        this.promotionRepository.findById(promotionDto.getId()).orElseThrow(()-> new NotFoundException("this promotion does not exists "));
+        this.promotionRepository.save(this.promotionMapper.toEntity(promotionDto));
     }
 }

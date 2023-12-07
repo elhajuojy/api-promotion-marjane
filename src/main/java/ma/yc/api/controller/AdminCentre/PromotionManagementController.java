@@ -5,6 +5,7 @@ import ma.yc.api.controller.Promotion.PromotionManger;
 import ma.yc.api.dto.PromotionCentreRequestDto;
 import ma.yc.api.services.PromotionCentreService;
 import ma.yc.api.services.PromotionService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,5 +29,22 @@ public class PromotionManagementController {
         }
 
     }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePromotion(@PathVariable("id") Long id,   @RequestHeader("Authorization") String token){
+        this.promotionService.deletePromotion(id);
+        return ResponseEntity.ok("promotion  deleted successfully " +id );
+    }
+
+    @PutMapping
+    public void updatePromotion(@RequestBody PromotionCentreRequestDto promotionCentreRequestDto,   @RequestHeader("Authorization") String token){
+        this.promotionService.updatePromotion(promotionCentreRequestDto);
+    }
+
+
+
+
+
 
 }
